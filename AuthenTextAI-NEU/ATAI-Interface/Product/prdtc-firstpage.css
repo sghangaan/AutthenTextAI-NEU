@@ -1,0 +1,327 @@
+
+html {
+    height: 100%;
+}
+
+header {
+    background-color: #fff;
+    padding: 0px ;
+    width:auto;
+}
+
+.logo {
+    flex: 1;
+  }
+
+nav {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    font-family: Cairo; 
+}
+
+.nav-links li {
+    font-size: 12px;
+    font-family: Cairo;
+}
+.nav-links li ~ li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    width: 700px;
+    height: 38px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+    font-family: Cairo;
+    font-weight: 700;
+}
+
+
+.nav-links a:hover {
+    color: #ff1900;
+}
+body {
+    background-image: url('../Product/HP_Images/PRDTCBG16.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.middle {
+    margin-top: 5px;
+    text-align: left;
+    padding: 80px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.middle h1 {
+    color: #FFF;
+    text-align: left;
+    font-family: Cairo;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 610;
+    line-height: 90%;
+    margin-bottom: 8px;
+}
+
+
+
+.middle p {
+    color: #FFF;
+    text-align: left;
+    font-family: Cairo;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 290;
+}
+
+
+
+.column-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+}
+
+
+.text-right {
+    font-size: 1.9rem;
+    margin-top: var(--space--top);
+    text-align: justify;
+}
+
+.text-right p {
+    font-size: 1.10rem;
+    margin-top: var(--space--top);
+    line-height: 1.09rem;
+    text-align: justify;
+    margin-left: 12%; /* Remove margin-left */
+}
+
+.text-left p, .text-right p {
+    font-size: 1.10rem;
+    margin-top: 0.5rem; /* Adjust as needed */
+    line-height: 1.09rem;
+
+}
+
+
+.cta-button {
+    
+    font-size: 1.10rem;
+    text-align: center;
+    font-family: Cairo;
+    display: inline-block;
+    padding: 0px;
+    width: 370px;
+    background-color: #fff;
+    color: #111;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+}
+
+.cta-button:hover {
+    font-family: Cairo;
+    background-color: #2751ea;
+    color: #ffffff;
+}
+
+
+
+/* Footer styles */
+footer {
+    font-family: Cairo;
+    font-size: 10px;
+    text-align: center;
+    padding: 3px;
+    background-color: #030303;
+    color: #fff;
+    margin-top: auto;
+}
+/* Terms and Condition | Privacy */
+.TCP {
+    list-style-type: none;
+    display: flex;
+    font-family: Cairo;
+    color: #fff;
+}
+
+.TCP li {
+    font-size: 11px;
+    font-family: Cairo;
+}
+
+.TCP a {
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #FFF;
+    transition: color 0.3s;
+    font-family: Cairo;
+}
+/*END*/
+
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    width: 99%;
+  }
+
+  /* SMALL SCREEN */
+
+@media only screen and (max-width: 850px) {
+    .col-sm-1 {
+        width: 8.33%;
+    }
+
+    .col-sm-2 {
+        width: 16.66%;
+    }
+
+    .col-sm-3 {
+        width: 25%;
+    }
+
+    .col-sm-4 {
+        width: 33.33%;
+    }
+
+    .col-sm-5 {
+        width: 41.66%;
+    }
+
+    .col-sm-6 {
+        width: 50%;
+    }
+
+    .col-sm-7 {
+        width: 58.33%;
+    }
+
+    .col-sm-8 {
+        width: 66.66%;
+    }
+
+    .col-sm-9 {
+        width: 75%;
+    }
+
+    .col-sm-10 {
+        width: 83.33%;
+    }
+
+    .col-sm-11 {
+        width: 91.66%;
+    }
+
+    .col-sm-12 {
+        width: 100%;
+    }
+}
+/* MEDIUM SCREEN */
+
+@media only screen and (max-width: 1280px) {
+    .col-md-1 {
+        width: 8.33%;
+    }
+
+    .col-md-2 {
+        width: 16.66%;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+
+    .col-md-4 {
+        width: 33.33%;
+    }
+
+    .col-md-5 {
+        width: 41.66%;
+    }
+
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-md-7 {
+        width: 58.33%;
+    }
+
+    .col-md-8 {
+        width: 66.66%;
+    }
+
+    .col-md-9 {
+        width: 75%;
+    }
+
+    .col-md-10 {
+        width: 83.33%;
+    }
+
+    .col-md-11 {
+        width: 91.66%;
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+}
+/* Styles for mobile screens */
+@media (max-width: 600px) {
+
+   /* Ongoing */
+   html {
+    height: 100%;
+   }  
+}
+
+/* Styles for desktop screens */
+@media (min-width: 768px) {
+    .hamburger-menu {
+        display: none; /* Hide the hamburger menu toggle on larger screens */
+    }
+    .logo {
+        margin-left: 50px;
+      }
+      .nav-links {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+        font-family: Cairo;
+        margin-right: 30px;
+        
+    }
+} 
+
+
+
