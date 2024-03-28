@@ -51,7 +51,7 @@ nav {
     color: #ff1900;
 }
 body {
-    background-image: url('../GETSTARTED-BTN/HP_Images/GS-BTN_BG1.png');
+    background-image: url('./HP_Images/GS-BTN_BG1.png');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -148,6 +148,72 @@ body {
     box-sizing: border-box;
     font-family: Cairo;
 }
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+  }
+  
+  /* File input */
+  .form-control {
+    padding: 10px 15px;
+    border: 1px solid #ddd; /* Lighter border color */
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  /* Hover effect */
+  .form-control:hover {
+    background-color: #fff;
+  }
+  
+  /* Focus effect */
+  .form-control:focus {
+    outline: none;
+    border-color: #2ecc71;
+  }
+  
+  /* Border color when file is chosen */
+  .form-control.has-files {
+    border-color: #888; /* Lighter border color */
+  }
+  
+  /* Border color when input is focused */
+  .form-control.border-black:focus {
+    border-color: #888; /* Lighter border color */
+  }
+  
+  /* Clear button */
+  .clear-button {
+    display: none; /* Hide the button initially */
+    padding: 8px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #e74c3c; /* Red color for the X symbol */
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .clear-button:hover {
+    color: #c0392b; /* Darker red on hover */
+  }
+  
+  .clear-button:active {
+    color: #ff0000; /* Bright red when activated */
+  }
+  
+  /* Show clear button when input has files */
+  .form-control.has-files + .clear-button {
+    display: inline-block;
+  }
+  
 
 .char-count {
     font-family: Cairo;

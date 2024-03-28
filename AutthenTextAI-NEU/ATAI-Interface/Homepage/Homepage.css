@@ -52,7 +52,7 @@ nav {
     color: #ff1900;
 }
 body {
-    background-image: url('../Homepage/HP_Images//Back1.png');
+    background-image: url('./HP_Images/Back1.png');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;

@@ -1,0 +1,233 @@
+
+
+
+<!-- http://bl.ocks.org/jeffthink/1630683 -->
+<!-- https://bost.ocks.org/mike/nest/ -->
+<!-- http://bl.ocks.org/chrisrzhou/2421ac6541b68c1680f8 -->
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Science - Metrics</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../Samples/d3.min.js"></script>
+    <script>
+        var loadData = function(){
+            dataframe =  [[1.0, 0.9913793103448275, 0.8448275862068965, 0.8362068965517241, 0.7758620689655172, 0.7629310344827587, 0.7198275862068966, 0.7068965517241379, 0.6551724137931034, 0.4827586206896552, 0.4827586206896552, 0.47413793103448276], [0.3154913294797688, 0.25410404624277455, 0.09063583815028903, 0.0, 0.5202312138728323, 0.14462427745664738, 0.324393063583815, 1.0, 0.8698265895953757, 0.16832369942196532, 0.051791907514450876, 0.30520231213872834], [0.05102040816326531, 0.17346938775510207, 1.0, 0.0, 0.0, 0.7551020408163265, 0.0, 0.0, 0.0, 0.5714285714285715, 0.5714285714285715, 0.5612244897959184], [0.12315270935960591, 0.3793103448275862, 0.35467980295566504, 0.019704433497536946, 1.0, 0.2660098522167488, 0.07881773399014778, 0.2758620689655173, 0.4630541871921182, 0.04926108374384237, 0.3497536945812808, 0.18719211822660098]] ;
+            features =  ["Management Fundamentals", "Operations Optimization", "Help Desk / Service Desk", "AECOM Technology (ACM)", "HVAC Maintenance", "Disaster Planning", "Facilities Management", "Oscilloscopes", "Cost Control", "Event Management", "Mobile Device Management", "Commercial Perimeter Protection"] ;
+            columns =  ["All Items", "Items Receiving Traffic", "Newly Created Items", "Visitors"] ;
+            colors =  ["#87ceeb", "#fcd72a", "#ce0058", "#70c176"] ;
+            // Create an array of integers from 0 to dimensions.length - 1
+            arrayAxes = Array(features.length).fill().map((x, i)=>i)
+            intLevels = 5
+            arrayLevels = Array(intLevels).fill().map((x, i)=>((i + 1) / intLevels))
+        }
+
+        var printTable = function(){
+            var div = d3.select("#test");
+            var trHead = div.append("table").append("thead").append("tr");
+            trHead
+                .selectAll("td").data(features).enter().append("td")
+                .text(function(dimension){return dimension;});
+            var table = div.select("table")
+            tbody = table.append("tbody")
+            tbody
+                .selectAll("tr").data(dataframe).enter().append("tr")
+                .selectAll("td").data(function(row){return row;}).enter().append("td")
+                .text(function(score){return score.toFixed(2);})
+        }
+
+        var drawWebbing = function(){
+            webbing = canvas.append("svg:g")
+                .attr("transform", "translate(" + xCentre + "," + yCentre + ")");
+            webbing
+                .selectAll(".webbing")
+                .data(arrayLevels)
+                .enter()
+                .append("svg:polygon")
+                .attr("points",
+                    function(idxRadius) {
+                        var strPoints = ""
+                        for (var idxAxis = 0; idxAxis < features.length; idxAxis++) {
+                            var x = idxRadius * radius * Math.cos(idxAxis * angleSegment);
+                            var y = idxRadius * radius * Math.sin(idxAxis * angleSegment);
+                            strPoints += x + "," + y + " ";
+                        }
+                        return strPoints;
+                    }
+                )
+                .attr("stroke", '#000')
+                .attr("stroke-width", "1px")
+                .attr("stroke-opacity", 1)
+                .attr("fill-opacity", 0);
+        }
+
+        var drawOverlays = function(){
+            overlays = canvas.append("svg:g")
+                .attr("transform", "translate(" + xCentre + "," + yCentre + ")");
+            overlays
+                .selectAll(".overlay")
+                .data(dataframe)
+                .enter()
+                .append("svg:polygon")
+                .attr("points",
+                    function(dataOverlay) {
+                        var strPoints = ""
+                        for (var idxCell = 0; idxCell < dataOverlay.length; idxCell++) {
+                            var x = dataOverlay[idxCell] * radius * Math.cos(idxCell * angleSegment);
+                            var y = dataOverlay[idxCell] * radius * Math.sin(idxCell * angleSegment);
+                            strPoints += x + "," + y + " ";
+                        }
+                        return strPoints;
+                    }
+                )
+                .attr("stroke", function(dataOverlay, idxOverlay) {
+                        return colors[idxOverlay]
+                    }
+                )
+                .attr("stroke-width", "2px")
+                .attr("stroke-opacity", 1)
+                .attr("fill", function(dataOverlay, idxOverlay) {
+                        return colors[idxOverlay]
+                    }
+                )
+                .attr("fill-opacity", 0.3)
+                .attr("id", function(dataOverlay, idxOverlay) {
+                        return "overlay-index-" + idxOverlay.toString()
+                    }
+                )
+                .on("mouseover", function(){d3.select(this).style("fill-opacity", 0.8);})
+                .on("mouseout", function(){d3.select(this).style("fill-opacity", 0.3);});
+        }
+
+        var drawSpokes = function(){
+            spokes = canvas.append("svg:g");
+            spokes
+                .selectAll(".spoke")
+                .data(arrayAxes)
+                .enter()
+                .append("svg:line")
+                .attr("x1", xCentre)
+                .attr("y1", yCentre)
+                .attr("x2", function(d, i) { return xCentre + widthChart / 2 * Math.cos(i * angleSegment); })
+                .attr("y2", function(d, i) { return yCentre + heightChart / 2 * Math.sin(i * angleSegment); })
+                .attr("stroke", "grey")
+                .attr("stroke-width", "1px");
+        }
+
+        var printLabels = function(){
+            labels = canvas.append("svg:g");
+            labels
+                .selectAll(".label")
+                .data(features)
+                .enter()
+                .append("svg:text")
+                .text(function(dimension){return dimension;})
+                .attr("x", function(d, i) { return xCentre + (radius * 1.1) * Math.cos(i * angleSegment); })
+                .attr("y", function(d, i) { return yCentre + (radius * 1.1) * Math.sin(i * angleSegment); })
+                .attr("text-anchor", function(d, i) {
+                        if (Math.cos(i * angleSegment) > 0.01) {
+                            return "start";
+                        }
+                        else if (Math.abs(Math.cos(i * angleSegment)) <= 0.01) {
+                            return "middle";
+                        }
+                        else { // if cosine is strictly smaller than -0.1
+                            return "end"
+                        }
+                    }
+                )
+                .attr("alignment-baseline", function(d, i) {
+                        if (Math.sin(i * angleSegment) > 0.1) {
+                            return "baseline";
+                        }
+                        else if (Math.abs(Math.sin(i * angleSegment)) <= 0.1) {
+                            return "middle";
+                        }
+                        else { // if sine is strictly smaller than -0.1
+                            return "hanging"
+                        }
+                    }
+                )
+                .attr("fill", "#000")
+                .attr("font-family", "sans-serif")
+                .attr("stroke-width", "1px");
+        }
+
+        var buildRadarChart = function(){
+            angleSegment = 2 * Math.PI / features.length
+            widthCanvas = $("#radar").width();
+            heightCanvas = $("#radar").height();
+            widthMargin = 150
+            heightMargin = 50
+            widthChart = Math.min(widthCanvas - widthMargin * 2, heightCanvas - heightMargin * 2);
+            heightChart = widthChart;
+            radius = widthChart / 2;
+            xCentre = widthChart / 2 + widthMargin;
+            yCentre = heightChart / 2 + heightMargin;
+            canvas = d3.select("#radar").append("svg").attr("width", widthCanvas).attr("height", heightCanvas);
+            drawSpokes();
+            printLabels();
+            drawWebbing();
+            drawOverlays();
+        }
+
+        var buildLegend = function(){
+            legend = d3.select("#legend");
+            var tbody = legend.append("table").append("tbody")
+            row = tbody.selectAll("tr").data(columns).enter().append("tr")
+            row
+                .append("td")
+                .append("svg")
+                .attr("width", 27)
+                .attr("height", 18)
+                .append("svg:rect")
+                .attr("width", 18)
+                .attr("height", 18)
+                .attr("id", function(label, idxLabel) { return "legend-index-" + idxLabel.toString() })
+                .attr("stroke", function(label, idxLabel) { return colors[idxLabel]})
+                .attr("stroke-width", "2px")
+                .attr("fill", function(label, idxLabel) { return colors[idxLabel]})
+                .attr("fill-opacity", "1")
+                .on("click", function(){
+                        if (this.attributes['fill-opacity'] == null){
+                            d3.select(this).attr("fill-opacity", "1");
+                            var idOverlay = this.attributes["id"].value.replace("legend-index-", "overlay-index-")
+                            d3.select("#" + idOverlay).attr("visibility", "hidden");
+                        }
+                        else if (this.attributes['fill-opacity'].value == "0"){
+                            d3.select(this).attr("fill-opacity", "1");
+                            var idOverlay = this.attributes["id"].value.replace("legend-index-", "overlay-index-")
+                            d3.select("#" + idOverlay).attr("visibility", "visible");
+                        }
+                        else{
+                            d3.select(this).attr("fill-opacity", "0");
+                            var idOverlay = this.attributes["id"].value.replace("legend-index-", "overlay-index-")
+                            d3.select("#" + idOverlay).attr("visibility", "hidden");
+                        }
+                    }
+                )
+            row
+                .append("td")
+                .text(function(label){return " " + label;})
+
+        }
+    </script>
+</head>
+<body>
+    <div id="test"></div>
+    <div id="radar" style="width: 650px; height: 700px"></div>
+    <div id="legend" style="width: 100px; height: 200px"></div>
+    <script>
+        loadData();
+        // printTable();
+        buildRadarChart();
+        buildLegend();
+    </script>
+</body>
+</html>

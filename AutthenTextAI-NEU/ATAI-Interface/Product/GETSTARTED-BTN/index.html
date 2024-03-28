@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="x-icon" href="./HP_Images/ICON6.png">
     <title>AuthenText AI</title>
-    <link rel="stylesheet" href="GS-btn.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="Cairo.css" rel="stylesheet">
     <script src="script.js"></script>
     
@@ -19,7 +19,7 @@
             
             <ul class="nav-links">
                 <li><a href="./Homepage.html">HOME</a></li>
-                <li><a href= "./">PRODUCT</a></li> 
+                <li><a href= "../AutthenTextAI-NEU/ATAI-Interface/Product/index.html">PRODUCT</a></li> 
                 <li><a href="../">TUTORIAL</a></li>
                 <li><a href="../ATAI_Information/About.html">ABOUT US</a></li>
                 <li><a href="../">CONTACT</a></li>
@@ -35,18 +35,23 @@
         <div class="container">
          <p>Try detecting one of our sample texts:</p>  
             <div class="button-container">
-              <a onclick="insertText('')">ChatCPT</a>
-              <a onclick="insertText('pogi')">GPT4</a>
-              <a onclick="insertText('mo')">Llama 2</a>
-              <a onclick="insertText('iloveyou')">Human</a>
-              <a onclick="insertText('<333333')">AI+HUMAN</a>
+              <a onclick="chatgpt()">ChatGPT</a>
+              <a onclick="gpt4()">GPT4</a>
+              <a onclick="llama()">Llama 2</a>
+              <a onclick="human()">Human</a>
+              <a onclick="mixed()">AI+HUMAN</a>
             </div>
         </div>
     </section>
     
     <div class="container-text">
         <div class="text-box">
-          <input type="text" class="text-input" id="text-input" placeholder="Enter Text to Check for AI and ChatGPT Plagiarism" maxlength="5000">
+          <textarea class="text-input" id="inputText" placeholder="Enter Text to Check for AI and ChatGPT Plagiarism" maxlength="5000"> </textarea>
+          <div class="input-container">
+            <input class="form-control" type="file" id="inpFile" accept="application/pdf" capture="environment">
+
+            <button class="clear-button" id="clearBtn">X</button>
+          </div>
           <div class="char-count">0 / 5000</div>
         </div>
     </div>
@@ -55,11 +60,12 @@
         <form id="termsForm">
             <input type="checkbox" id="agree">
             <label for="agree">By continuing you agree to our Terms of service</label>
-            <button type="submit" id="submitButton" disabled>Detext Text</button>
+           
             
             <div class="button-box">  
-                <button onclick="uploadFile()">Upload File</button>
-                <button onclick="batchUpload()">Batch Files Upload</button>
+                <button type="submit" id="submitButton" disabled>Detect Text</button>
+                <button id="btnUpload">Upload File</button>
+                <button >Batch Files Upload</button>
             </div> <br>
 
         </form>
