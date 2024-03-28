@@ -1,0 +1,380 @@
+
+html {
+    height: 100%;
+}
+
+header {
+    background-color: #fff;
+    padding: 0px ;
+    width:auto;
+}
+
+.logo {
+    flex: 1;
+  }
+
+nav {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    font-family: Cairo; 
+}
+
+.nav-links li {
+    font-size: 12px;
+    font-family: Cairo;
+}
+.nav-links li ~ li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    width: 700px;
+    height: 38px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+    font-family: Cairo;
+    font-weight: 700;
+}
+
+
+.nav-links a:hover {
+    color: #ff1900;
+}
+body {
+    background-image: url('../GETSTARTED-BTN/HP_Images/GS-BTN_BG1.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.middle {
+    padding: 10px;
+    color: #fff;
+    
+    
+}
+
+.middle h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Cairo;
+    font-size: 30px;
+    font-weight: 560;
+    
+    
+   
+}
+
+.middle p {
+    
+    color: #FFF;
+    text-align: center;
+    font-family: Cairo;
+    font-style: normal;
+    font-weight: 280;
+}
+
+.container {
+    color: #FFF;
+    text-align: center;
+    font-family: Cairo;
+  }
+
+.button-container {
+    margin-top: 3px;
+ }
+
+.button-container a {
+    display: inline-block;
+    margin: 5px;
+    padding: 9px 15px;
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.2s;
+    font-family: Cairo;
+    border: 2px solid #ffffff; /* Add border to each button */
+}
+
+.button-container a:hover {
+    background-color: #3626ad; /* Darker shade of black on hover */
+}
+
+
+
+
+.container-text {
+    text-align: center;
+    margin: 4px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.text-box {
+    position: relative;
+    text-align: justify; /* Changed from 'display: justify' to 'text-align: justify' */
+    background-color: #fff;
+    padding: 80px;
+    width: 62%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-input {
+    width: 100%; /* Set width to 100% */
+    padding: 80px; /* Adjust padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: Cairo;
+}
+
+.char-count {
+    font-family: Cairo;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+
+form {
+    text-align: center;
+    font-family: Cairo;
+}
+
+button {
+    margin-top: 5px;
+    font-family: Cairo;
+    border: 1px solid #ccc;
+}
+
+
+.button-box {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed */
+  }
+
+.button-box button {
+    margin: 0 10px; /* Adjust spacing between buttons */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff; /* Blue color, change as needed */
+    color: #000000; /* Text color */
+}
+
+.button-box button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+    color: #ffffff; /* Text color */
+}
+
+
+::-webkit-scrollbar{
+    width: 9px;
+}
+::-webkit-scrollbar-track{
+    background:#000000;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#fbfbfb, #000000);
+    border-radius: 26px;
+    height: 12%;
+
+}
+
+
+/* Footer styles */
+footer {
+    font-family: Cairo;
+    font-size: 10px;
+    text-align: center;
+    padding: 3px;
+    background-color: #030303;
+    color: #fff;
+    margin-top: auto;
+}
+/* Terms and Condition | Privacy */
+.TCP {
+    list-style-type: none;
+    display: flex;
+    font-family: Cairo;
+    color: #fff;
+}
+
+.TCP li {
+    font-size: 11px;
+    font-family: Cairo;
+}
+
+.TCP a {
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #FFF;
+    transition: color 0.3s;
+    font-family: Cairo;
+}
+/*END*/
+
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    width: 99%;
+  }
+
+  /* SMALL SCREEN */
+
+@media only screen and (max-width: 850px) {
+    .col-sm-1 {
+        width: 8.33%;
+    }
+
+    .col-sm-2 {
+        width: 16.66%;
+    }
+
+    .col-sm-3 {
+        width: 25%;
+    }
+
+    .col-sm-4 {
+        width: 33.33%;
+    }
+
+    .col-sm-5 {
+        width: 41.66%;
+    }
+
+    .col-sm-6 {
+        width: 50%;
+    }
+
+    .col-sm-7 {
+        width: 58.33%;
+    }
+
+    .col-sm-8 {
+        width: 66.66%;
+    }
+
+    .col-sm-9 {
+        width: 75%;
+    }
+
+    .col-sm-10 {
+        width: 83.33%;
+    }
+
+    .col-sm-11 {
+        width: 91.66%;
+    }
+
+    .col-sm-12 {
+        width: 100%;
+    }
+}
+/* MEDIUM SCREEN */
+
+@media only screen and (max-width: 1280px) {
+    .col-md-1 {
+        width: 8.33%;
+    }
+
+    .col-md-2 {
+        width: 16.66%;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+
+    .col-md-4 {
+        width: 33.33%;
+    }
+
+    .col-md-5 {
+        width: 41.66%;
+    }
+
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-md-7 {
+        width: 58.33%;
+    }
+
+    .col-md-8 {
+        width: 66.66%;
+    }
+
+    .col-md-9 {
+        width: 75%;
+    }
+
+    .col-md-10 {
+        width: 83.33%;
+    }
+
+    .col-md-11 {
+        width: 91.66%;
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+}
+/* Styles for mobile screens */
+@media (max-width: 600px) {
+
+   /* Ongoing */
+   html {
+    height: 100%;
+   }  
+}
+
+/* Styles for desktop screens */
+@media (min-width: 768px) {
+    .hamburger-menu {
+        display: none; /* Hide the hamburger menu toggle on larger screens */
+    }
+    .logo {
+        margin-left: 50px;
+      }
+      .nav-links {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+        font-family: Cairo;
+        margin-right: 30px;
+        
+    }
+} 
+
+
+
